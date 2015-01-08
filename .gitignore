@@ -1,0 +1,8 @@
+# Folders
+/app/vendors/
+/node_modules/
+
+# Files
+.DS_Store
+Thumbs.db
+npm-debug.log

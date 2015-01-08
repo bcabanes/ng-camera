@@ -1,2 +1,2 @@
 # ng-camera
-Angularjs directive using camera.js
+Angularjs directive using WebcamJS
