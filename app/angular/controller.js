@@ -8,7 +8,10 @@
     controller.$inject = [];
 
     function controller() {
-console.log('hello controller');
+        /* jshint validthis: true */
+        var vm = this;
+
+        vm.picture = false; // Initial state
     }
 
 })(angular);
