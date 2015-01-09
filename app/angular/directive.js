@@ -28,7 +28,6 @@
         };
 
         function link(scope, element, attrs) {
-console.log(scope);
             /**
              * Set default variables
              */
