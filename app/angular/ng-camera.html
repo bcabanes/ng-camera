@@ -1,4 +1,9 @@
 <div class="ng-camera">
+
+    <div class="ng-camera-countdown" ng-if="countdown" ng-show="activeCountdown">
+        <p class="tick">{{countdownText}}</p>
+    </div>
+
     <div class="ng-camera-stack">
         <img class="ng-camera-overlay" ng-if="overlaySrc" ng-show="cameraLive" ng-src="{{overlaySrc}}" alt="overlay">
         <div id="ng-camera-feed"></div>

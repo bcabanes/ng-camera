@@ -6,13 +6,15 @@
         .module('camera')
         .directive('ngCamera', directive);
 
-    directive.$inject = [];
+    directive.$inject = ['$q', '$timeout'];
 
-    function directive() {
+    function directive($q, $timeout) {
         return {
             'restrict': 'E',
             'scope': {
                 'actionMessage': '@',
+                'captureMessage': '@',
+                'countdown': '@',
                 'flashFallbackUrl': '@',
                 'overlayUrl': '@',
                 'outputHeight': '@',
@@ -34,6 +36,7 @@
              */
             scope.libraryLoaded = false;
             scope.cameraLive = false;
+            scope.activeCountdown = false;
 
             /**
              * Set output dimensions
@@ -96,15 +99,58 @@
             }
 
             /**
+             * Set countdown
+             */
+            if(scope.countdown !== undefined) {
+                scope.countdownTime = parseInt(scope.countdown) * 1000;
+                scope.countdownText = parseInt(scope.countdown);
+            }
+            scope.countdownStart = function() {
+                scope.activeCountdown = true;
+                scope.countdownPromise = $q.defer();
+                scope.countdownTick = setInterval(function() {
+                    return scope.$apply(function() {
+                        var nextTick;
+                        nextTick = parseInt(scope.countdownText) - 1;
+                        if(nextTick === 0) {
+                            scope.countdownText = scope.captureMessage != null ? scope.captureMessage : 'GO!';
+                            clearInterval(scope.countdownTick);
+                            scope.countdownPromise.resolve();
+                        }else{
+                            scope.countdownText = nextTick;
+                        }
+                    });
+                }, 1000);
+            };
+
+            /**
              * Get snapshot
              */
             scope.getSnapshot = function() {
-                if(scope.shutterUrl !== undefined) {
-                    scope.shutter.play();
+                if(scope.countdown !== undefined) {
+                    scope.countdownStart();
+                    scope.countdownPromise.promise.then(function() {
+                        $timeout(function() {
+                            scope.activeCountdown = false;
+                        }, 2000);
+
+                        if(scope.shutterUrl !== undefined) {
+                            scope.shutter.play();
+                        }
+
+                        Webcam.snap(function(data_uri) {
+                            scope.snapshot = data_uri;
+                        });
+                    });
+                } else {
+                    if(scope.shutterUrl !== undefined) {
+                        scope.shutter.play();
+                    }
+
+                    Webcam.snap(function(data_uri) {
+                        scope.snapshot = data_uri;
+                    });
                 }
-                Webcam.snap(function(data_uri) {
-                    scope.snapshot = data_uri;
-                });
             };
         }
     }
