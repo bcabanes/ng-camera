@@ -92,7 +92,7 @@
                 scope.shutter = new Audio();
                 scope.shutter.autoplay = false;
                 if(navigator.userAgent.match(/Firefox/)) {
-                    scope.shutter.src = scope.shutterUrl.split('.')[1];
+                    scope.shutter.src = scope.shutterUrl.split('.')[0] + '.ogg';
                 } else {
                     scope.shutter.src = scope.shutterUrl;
                 }
