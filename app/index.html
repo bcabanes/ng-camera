@@ -26,8 +26,8 @@
             action-message="Take picture"
             snapshot="vm.picture"
             flash-fallback-url="/vendors/webcamjs/webcam.swf"
-            overlay-src="/overlay.png"
-
+            overlay-url="/overlay.png"
+            shutter-url="/shutter.mp3"
             ></ng-camera>
 
         <img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">

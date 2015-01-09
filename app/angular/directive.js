@@ -14,9 +14,10 @@
             'scope': {
                 'actionMessage': '@',
                 'flashFallbackUrl': '@',
-                'overlaySrc': '@',
+                'overlayUrl': '@',
                 'outputHeight': '@',
                 'outputWidth': '@',
+                'shutterUrl': '@',
                 'viewerHeight': '@',
                 'viewerWidth': '@',
                 'imageFormat': '@',
@@ -82,9 +83,25 @@
             });
 
             /**
+             * Preload the shutter sound
+             */
+            if(scope.shutterUrl !== undefined) {
+                scope.shutter = new Audio();
+                scope.shutter.autoplay = false;
+                if(navigator.userAgent.match(/Firefox/)) {
+                    scope.shutter.src = scope.shutterUrl.split('.')[1];
+                } else {
+                    scope.shutter.src = scope.shutterUrl;
+                }
+            }
+
+            /**
              * Get snapshot
              */
             scope.getSnapshot = function() {
+                if(scope.shutterUrl !== undefined) {
+                    scope.shutter.play();
+                }
                 Webcam.snap(function(data_uri) {
                     scope.snapshot = data_uri;
                 });
