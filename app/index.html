@@ -13,11 +13,17 @@
 </head>
 <body ng-app="camera">
 
-    <main class="app" ng-controller="cameraController">
+    <main class="app" ng-controller="cameraController as vm">
         <ng-camera
             height="320"
             width="426"
-            image-format="'jpeg'"></ng-camera>
+            image-format="jpeg"
+            jpeg-quality="100"
+            action-message="Take picture"
+            snapshot="vm.picture"
+            ></ng-camera>
+
+        <img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
     </main>
 
     <script src="/vendors/angular/angular.js"></script>
