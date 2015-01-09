@@ -13,8 +13,11 @@
             'restrict': 'E',
             'scope': {
                 'actionMessage': '@',
-                'height': '@',
-                'width': '@',
+                'flashFallbackUrl': '@',
+                'outputHeight': '@',
+                'outputWidth': '@',
+                'viewerHeight': '@',
+                'viewerWidth': '@',
                 'imageFormat': '@',
                 'jpegQuality': '@',
                 'snapshot': '='
@@ -32,35 +35,45 @@
             scope.cameraLive = false;
 
             /**
+             * Set output dimensions
+             */
+            if(scope.outputHeight === 'undefined') {
+                scope.outputHeight = scope.viewerHeight;
+            }
+            if(scope.outputWidth === 'undefined') {
+                scope.outputWidth = scope.viewerWidth;
+            }
+
+            /**
              * Set configuration parameters
              * @type {object}
              */
             Webcam.set({
-                width: scope.width,
-                height: scope.height,
+                width: scope.viewerWidth,
+                height: scope.viewerHeight,
+                dest_width : scope.outputWidth,
+                dest_height : scope.outputHeight,
                 image_format: scope.imageFormat,
                 jpeg_quality: scope.jpegQuality,
                 force_flash: false
             });
-            Webcam.setSWFLocation('/vendors/webcamjs/webcam.swf');
+            Webcam.setSWFLocation(scope.flashFallbackUrl);
             Webcam.attach('#ng-camera-feed');
 
             /**
              * Register WebcamJS events
              */
-            Webcam.on('load', libraryLoaded);
-            Webcam.on('live', cameraLive);
-            Webcam.on('error', error);
-
-            var libraryLoaded = function() {
+            Webcam.on('load', function() {
+                console.info('library loaded');
                 scope.libraryLoaded = true;
-            };
-            var cameraLive = function() {
+            });
+            Webcam.on('live', function() {
+                console.info('camera live');
                 scope.cameraLive = true;
-            };
-            var error = function(error) {
+            });
+            Webcam.on('error', function(error) {
                 console.error('WebcameJS directive ERROR: ', error);
-            };
+            });
 
             /**
              * Get snapshot
