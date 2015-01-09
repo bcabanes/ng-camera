@@ -61,7 +61,7 @@
                 jpeg_quality: scope.jpegQuality,
                 force_flash: false
             });
-            if(scope.flashFallbackUrl !== 'undefined') {
+            if(scope.flashFallbackUrl !== 'undefined') {
                 Webcam.setSWFLocation(scope.flashFallbackUrl);
             }
             Webcam.attach('#ng-camera-feed');
