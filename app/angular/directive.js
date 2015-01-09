@@ -14,6 +14,7 @@
             'scope': {
                 'actionMessage': '@',
                 'flashFallbackUrl': '@',
+                'overlaySrc': '@',
                 'outputHeight': '@',
                 'outputWidth': '@',
                 'viewerHeight': '@',
@@ -27,11 +28,11 @@
         };
 
         function link(scope, element, attrs) {
-
+console.log(scope);
             /**
              * Set default variables
              */
-            scope.loaded = false;
+            scope.libraryLoaded = false;
             scope.cameraLive = false;
 
             /**
@@ -51,13 +52,15 @@
             Webcam.set({
                 width: scope.viewerWidth,
                 height: scope.viewerHeight,
-                dest_width : scope.outputWidth,
-                dest_height : scope.outputHeight,
+                dest_width: scope.outputWidth,
+                dest_height: scope.outputHeight,
                 image_format: scope.imageFormat,
                 jpeg_quality: scope.jpegQuality,
                 force_flash: false
             });
-            Webcam.setSWFLocation(scope.flashFallbackUrl);
+            if(scope.flashFallbackUrl !== 'undefined') {
+                Webcam.setSWFLocation(scope.flashFallbackUrl);
+            }
             Webcam.attach('#ng-camera-feed');
 
             /**
@@ -65,11 +68,15 @@
              */
             Webcam.on('load', function() {
                 console.info('library loaded');
-                scope.libraryLoaded = true;
+                scope.$apply(function() {
+                    scope.libraryLoaded = true;
+                });
             });
             Webcam.on('live', function() {
                 console.info('camera live');
-                scope.cameraLive = true;
+                scope.$apply(function() {
+                    scope.cameraLive = true;
+                });
             });
             Webcam.on('error', function(error) {
                 console.error('WebcameJS directive ERROR: ', error);
@@ -83,7 +90,6 @@
                     scope.snapshot = data_uri;
                 });
             };
-
         }
     }
 

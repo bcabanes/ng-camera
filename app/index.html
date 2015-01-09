@@ -10,6 +10,8 @@
     <title>ng-camera</title>
     <meta name="description" content="">
 
+    <link rel="stylesheet" href="/style.css">
+
 </head>
 <body ng-app="camera">
 
@@ -24,6 +26,8 @@
             action-message="Take picture"
             snapshot="vm.picture"
             flash-fallback-url="/vendors/webcamjs/webcam.swf"
+            overlay-src="/overlay.png"
+
             ></ng-camera>
 
         <img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
