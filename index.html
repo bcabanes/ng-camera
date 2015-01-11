@@ -55,9 +55,9 @@ to ensure fallback and crossbrowser requirements.</p>
         jpeg-quality="100"
         action-message="Take picture"
         snapshot="vm.picture"
-        flash-fallback-url="/javascripts/vendors/webcamjs/webcam.swf"
-        overlay-url="/images/overlay.png"
-        shutter-url="/shutter.mp3"
+        flash-fallback-url="/ng-camera/javascripts/vendors/webcamjs/webcam.swf"
+        overlay-url="/ng-camera/images/overlay.png"
+        shutter-url="/ng-camera/shutter.mp3"
         ></ng-camera>
 
         <img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
@@ -195,11 +195,11 @@ the snapshot | <em>opional</em>
           </script>
 
     <script src="https://code.angularjs.org/1.3.8/angular.min.js"></script>
-    <script src="/javascripts/vendors/webcamjs/webcam.js"></script>
+    <script src="/ng-camera/javascripts/vendors/webcamjs/webcam.js"></script>
 
-    <script src="/javascripts/angular/app.js"></script>
-    <script src="/javascripts/angular/controller.js"></script>
-    <script src="/javascripts/angular/ng-camera.js"></script>
+    <script src="/ng-camera/javascripts/angular/app.js"></script>
+    <script src="/ng-camera/javascripts/angular/controller.js"></script>
+    <script src="/ng-camera/javascripts/angular/ng-camera.js"></script>
 
   </body>
 </html>
