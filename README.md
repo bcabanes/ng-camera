@@ -8,7 +8,9 @@ like you want.
 To manage this process, ng-camera uses the [WebcamJS](https://github.com/jhuckaby/webcamjs) standalone Javascript library developed by Joseph Huckaby,
 to ensure fallback and crossbrowser requirements.
 
-## Download
+## Live example
+
+To see a live example, go to the [demo's page](http://bcabanes.github.io/ng-camera)
 
 ## Installation
 
