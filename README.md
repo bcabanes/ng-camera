@@ -70,6 +70,21 @@ the snapshot | _opional_
 * `overlay-url` _string_ Overlay's url to display on top of the camera stream
 * `shutter-url` _string_ Shutter sound's url to play when taking the snapshot
 
+### Working example
+
+A working example is available in the `app` folder.
+Make sure to install bower and node dependencies:
+
+```bash
+npm install && bower install
+```
+
+Then start the node server, it will be accessible on `http:0.0.0.0:3000`
+
+```bash
+node server.js
+```
+
 ## License
 
 The MIT License (MIT)
