@@ -12,6 +12,12 @@ to ensure fallback and crossbrowser requirements.
 
 ## Installation
 
+#### Using [Bower](http://bower.io/)
+
+```bash
+bower install ng-camera
+```
+
 ## Usage
 
 ### Import files scripts
