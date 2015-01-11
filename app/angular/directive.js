@@ -39,12 +39,18 @@
             scope.activeCountdown = false;
 
             /**
-             * Set output dimensions
+             * Set dimensions
              */
-            if(scope.outputHeight === 'undefined') {
+            if(scope.viewerHeight === undefined) {
+                scope.viewerHeight = 'auto';
+            }
+            if(scope.viewerWidth === undefined) {
+                scope.viewerWidth = 'auto';
+            }
+            if(scope.outputHeight === undefined) {
                 scope.outputHeight = scope.viewerHeight;
             }
-            if(scope.outputWidth === 'undefined') {
+            if(scope.outputWidth === undefined) {
                 scope.outputWidth = scope.viewerWidth;
             }
 
