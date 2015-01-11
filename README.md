@@ -2,7 +2,7 @@
 
 Ng-camera is an AngularJS directive for capturing images
 form your computer's camera, and delivering them to you as [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme).
-The images is transmitted to your angularjs controller and can be modified
+The images is transmitted to your AngularJS controller and can be modified
 like you want.
 
 To manage this process, ng-camera uses the [WebcamJS](https://github.com/jhuckaby/webcamjs) standalone Javascript library developed by Joseph Huckaby,
@@ -14,7 +14,22 @@ to ensure fallback and crossbrowser requirements.
 
 ## Usage
 
+### Import files scripts
+
+Ng-camera uses WebcamJS to work properly so you need to add the script in your
+main file, don't forget to load the directive file:
+
+```html
+<script src="/path/to/webcam.js"></script>
+<script src="/path/to/ng-camera.js"></script>
+```
+
 ### Add the module as dependency
+
+Simply add the module as dependency to your main application module like this:
+```javascript
+angular.module('myApplication', ['camera']);
+```
 
 ### The directive
 
