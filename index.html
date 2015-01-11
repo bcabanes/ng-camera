@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ng-camera by bcabanes</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Ng-camera</h1>
+        <p>AngularJS directive for capturing images form your computer&#39;s camera.</p>
+
+        <p class="view"><a href="https://github.com/bcabanes/ng-camera">View the Project on GitHub <small>bcabanes/ng-camera</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/bcabanes/ng-camera/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bcabanes/ng-camera/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bcabanes/ng-camera">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="ng-camera" class="anchor" href="#ng-camera" aria-hidden="true"><span class="octicon octicon-link"></span></a>ng-camera</h1>
+
+<p>Ng-camera is an AngularJS directive for capturing images
+form your computer's camera, and delivering them to you as <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URIs</a>.
+The images is transmitted to your AngularJS controller and can be modified
+like you want.</p>
+
+<p>To manage this process, ng-camera uses the <a href="https://github.com/jhuckaby/webcamjs">WebcamJS</a> standalone Javascript library developed by Joseph Huckaby,
+to ensure fallback and crossbrowser requirements.</p>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h2>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h4>
+<a id="using-bower" class="anchor" href="#using-bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using <a href="http://bower.io/">Bower</a>
+</h4>
+
+<div class="highlight highlight-bash"><pre>bower install ng-camera</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="import-files-scripts" class="anchor" href="#import-files-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Import files scripts</h3>
+
+<p>Ng-camera uses WebcamJS to work properly so you need to add the script in your
+main file, don't forget to load the directive file:</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>/path/to/webcam.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>/path/to/ng-camera.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h3>
+<a id="add-the-module-as-dependency" class="anchor" href="#add-the-module-as-dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add the module as dependency</h3>
+
+<p>Simply add the module as dependency to your main application module like this:</p>
+
+<div class="highlight highlight-javascript"><pre>angular.module(<span class="pl-s1"><span class="pl-pds">'</span>myApplication<span class="pl-pds">'</span></span>, [<span class="pl-s1"><span class="pl-pds">'</span>camera<span class="pl-pds">'</span></span>]);</pre></div>
+
+<h3>
+<a id="the-directive" class="anchor" href="#the-directive" aria-hidden="true"><span class="octicon octicon-link"></span></a>The directive</h3>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-camera</span>
+    <span class="pl-e">capture-message</span>=<span class="pl-s1"><span class="pl-pds">"</span>Cheeeese!<span class="pl-pds">"</span></span>
+    <span class="pl-e">countdown</span>=<span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
+    <span class="pl-e">output-height</span>=<span class="pl-s1"><span class="pl-pds">"</span>160<span class="pl-pds">"</span></span>
+    <span class="pl-e">output-width</span>=<span class="pl-s1"><span class="pl-pds">"</span>213<span class="pl-pds">"</span></span>
+    <span class="pl-e">viewer-height</span>=<span class="pl-s1"><span class="pl-pds">"</span>320<span class="pl-pds">"</span></span>
+    <span class="pl-e">viewer-width</span>=<span class="pl-s1"><span class="pl-pds">"</span>426<span class="pl-pds">"</span></span>
+    <span class="pl-e">image-format</span>=<span class="pl-s1"><span class="pl-pds">"</span>jpeg<span class="pl-pds">"</span></span>
+    <span class="pl-e">jpeg-quality</span>=<span class="pl-s1"><span class="pl-pds">"</span>100<span class="pl-pds">"</span></span>
+    <span class="pl-e">action-message</span>=<span class="pl-s1"><span class="pl-pds">"</span>Take picture<span class="pl-pds">"</span></span>
+    <span class="pl-e">snapshot</span>=<span class="pl-s1"><span class="pl-pds">"</span>vm.picture<span class="pl-pds">"</span></span>
+    <span class="pl-e">flash-fallback-url</span>=<span class="pl-s1"><span class="pl-pds">"</span>/vendors/webcamjs/webcam.swf<span class="pl-pds">"</span></span>
+    <span class="pl-e">overlay-url</span>=<span class="pl-s1"><span class="pl-pds">"</span>/overlay.png<span class="pl-pds">"</span></span>
+    <span class="pl-e">shutter-url</span>=<span class="pl-s1"><span class="pl-pds">"</span>/shutter.mp3<span class="pl-pds">"</span></span>
+&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-camera</span>&gt;</pre></div>
+
+<h4>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h4>
+
+<p>ng-camera comes with lots of options to simplify your development:</p>
+
+<ul>
+<li>
+<code>capture-message</code> <em>string</em> Message to display when the countdown is finished
+| <em>dependant of</em> <code>countdown</code>
+</li>
+<li>
+<code>countdown</code> <em>string</em> Number of seconds to wait and display before getting
+the snapshot | <em>opional</em>
+</li>
+<li>
+<code>output-height</code> <em>string</em> Height of the captured snapshot image in pixels | <em>default to</em> <code>viewer-height</code>
+</li>
+<li>
+<code>output-width</code> <em>string</em> Width of the captured snapshot image in pixels | <em>default to</em> 'viewer-width'</li>
+<li>
+<code>viewer-height</code> <em>string</em> Height of the live camera viewer in pixels | <em>default to the actual size of the DOM element</em> <code>'auto'</code>
+</li>
+<li>
+<code>image-format</code> <em>string</em> Image format of captured snapshot image, may be <code>jpeg</code> or <code>png</code> | <strong>not used</strong>
+</li>
+<li>
+<code>jpeg-quality</code> <em>string</em> For JPEG images, this is the desired quality, from 0 (worst) to 100 (best) | <strong>not used</strong>
+</li>
+<li>
+<code>action-message</code> <em>string</em> Message/Text to display inside the action button</li>
+<li>
+<code>snapshot</code> <em>object</em> AngularJS model to retreive the snapshot image to your controller</li>
+<li>
+<code>flash-fallback-url</code> <em>string</em> Url of the Adobe Flash player to enable the fallback and crossbrowser modes, <em>default based on</em> <code>navigator.getUserMedia</code>
+</li>
+<li>
+<code>overlay-url</code> <em>string</em> Overlay's url to display on top of the camera stream</li>
+<li>
+<code>shutter-url</code> <em>string</em> Shutter sound's url to play when taking the snapshot</li>
+</ul>
+
+<h3>
+<a id="working-example" class="anchor" href="#working-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working example</h3>
+
+<p>A working example is available in the <code>app</code> folder.
+Make sure to install bower and node dependencies:</p>
+
+<div class="highlight highlight-bash"><pre>npm install <span class="pl-k">&amp;&amp;</span> bower install</pre></div>
+
+<p>Then start the node server, it will be accessible on <code>http:0.0.0.0:3000</code></p>
+
+<div class="highlight highlight-bash"><pre>node server.js</pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2015 Benjamin Cabanes</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bcabanes">bcabanes</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
