@@ -43,7 +43,7 @@ ng-camera comes with lots of options to simplify your development:
 * `capture-message` _string_ Message to display when the countdown is finished
 | _dependant of_ `countdown`
 * `countdown` _string_ Number of seconds to wait and display before getting
-the snapshot
+the snapshot | _opional_
 * `output-height` _string_ Height of the captured snapshot image in pixels | _default to_ `viewer-height`
 * `output-width` _string_ Width of the captured snapshot image in pixels | _default to_ 'viewer-width'
 * `viewer-height` _string_ Height of the live camera viewer in pixels | _default to the actual size of the DOM element_ `'auto'`
