@@ -10,7 +10,7 @@ to ensure fallback and crossbrowser requirements.
 
 ## Live example
 
-To see a live example, go to the [demo's page](http://bcabanes.github.io/ng-camera)
+To see a live example, go to the [demo's page](http://bcabanes.github.io/ng-camera).
 
 ## Installation
 
