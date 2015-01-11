@@ -42,7 +42,28 @@ to ensure fallback and crossbrowser requirements.</p>
 <h2>
 <a id="live-example" class="anchor" href="#live-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Live example</h2>
 
-<p>To see a live example, go to the <a href="http://bcabanes.github.io/ng-camera">demo's page</a>.</p>
+<div class="example-app-container" ng-app="camera">
+    <div class="app" ng-controller="cameraController as vm">
+        <ng-camera
+        capture-message="Cheeeese!"
+        countdown="3"
+        output-height="160"
+        output-width="213"
+        viewer-height="320"
+        viewer-width="426"
+        image-format="jpeg"
+        jpeg-quality="100"
+        action-message="Take picture"
+        snapshot="vm.picture"
+        flash-fallback-url="/javascripts/vendors/webcamjs/webcam.swf"
+        overlay-url="/images/overlay.png"
+        shutter-url="/shutter.mp3"
+        ></ng-camera>
+
+        <img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
+    </div>
+</div>
+
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -135,8 +156,7 @@ the snapshot | <em>opional</em>
 <h3>
 <a id="working-example" class="anchor" href="#working-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working example</h3>
 
-<p>A working example is available in the <code>app</code> folder.
-Make sure to install bower and node dependencies:</p>
+<p>A working example is available in the <code>app</code> folder. Make sure to install bower and node dependencies:</p>
 
 <div class="highlight highlight-bash"><pre>npm install <span class="pl-k">&amp;&amp;</span> bower install</pre></div>
 
@@ -173,6 +193,13 @@ Make sure to install bower and node dependencies:</p>
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
+    <script src="https://code.angularjs.org/1.3.8/angular.min.js"></script>
+    <script src="/javascripts/vendors/webcamjs/webcam.js"></script>
+
+    <script src="/javascripts/angular/app.js"></script>
+    <script src="/javascripts/angular/controller.js"></script>
+    <script src="/javascripts/angular/ng-camera.js"></script>
 
   </body>
 </html>
