@@ -138,6 +138,7 @@
                     scope.countdownPromise.promise.then(function() {
                         $timeout(function() {
                             scope.activeCountdown = false;
+                            scope.countdownText = parseInt(scope.countdown);
                         }, 2000);
 
                         if(scope.shutterUrl !== undefined) {
