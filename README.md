@@ -44,3 +44,13 @@ ng-camera comes with lots of options to simplify your development:
 | _dependant of_ `countdown`
 * `countdown` _string_ Number of seconds to wait and display before getting
 the snapshot
+* `output-height` _string_ Height of the captured snapshot image in pixels | _default to_ `viewer-height`
+* `output-width` _string_ Width of the captured snapshot image in pixels | _default to_ 'viewer-width'
+* `viewer-height` _string_ Height of the live camera viewer in pixels | _default to the actual size of the DOM element_ `'auto'`
+* `image-format` _string_ Image format of captured snapshot image, may be `jpeg` or `png` | **not used**
+* `jpeg-quality` _string_ For JPEG images, this is the desired quality, from 0 (worst) to 100 (best) | **not used**
+* `action-message` _string_ Message/Text to display inside the action button
+* `snapshot` _object_ AngularJS model to retreive the snapshot image to your controller
+* `flash-fallback-url` _string_ Url of the Adobe Flash player to enable the fallback and crossbrowser modes, _default based on_ `navigator.getUserMedia`
+* `overlay-url` _string_ Overlay's url to display on top of the camera stream
+* `shutter-url` _string_ Shutter sound's url to play when taking the snapshot
