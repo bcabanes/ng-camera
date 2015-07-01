@@ -49,6 +49,8 @@ angular.module('myApplication', ['camera']);
     output-width="213"
     viewer-height="320"
     viewer-width="426"
+    crop-height="90"
+    crop-width="120"
     image-format="jpeg"
     jpeg-quality="100"
     action-message="Take picture"
@@ -70,6 +72,8 @@ the snapshot | _opional_
 * `output-height` _string_ Height of the captured snapshot image in pixels | _default to_ `viewer-height`
 * `output-width` _string_ Width of the captured snapshot image in pixels | _default to_ 'viewer-width'
 * `viewer-height` _string_ Height of the live camera viewer in pixels | _default to the actual size of the DOM element_ `'auto'`
+* `crop-height` _string_ Crop height of the captured snapshot image in pixels | _default to_ 'false'
+* `crop-width` _string_ Crop width of the captured snapshot image in pixels | _default to_ 'false'
 * `image-format` _string_ Image format of captured snapshot image, may be `jpeg` or `png` | **not used**
 * `jpeg-quality` _string_ For JPEG images, this is the desired quality, from 0 (worst) to 100 (best) | **not used**
 * `action-message` _string_ Message/Text to display inside the action button
