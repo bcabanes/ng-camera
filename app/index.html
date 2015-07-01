@@ -31,6 +31,10 @@
             overlay-url="/overlay.png"
             shutter-url="/shutter.mp3"
             ></ng-camera>
+            <!-- for cropping:
+                crop-height="90"
+                crop-width="120"
+            -->
 
         <img ng-if="vm.picture" ng-src="{{vm.picture}}" alt="webcam picture">
     </main>

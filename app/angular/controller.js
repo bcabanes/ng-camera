@@ -7,7 +7,7 @@
 
     controller.$inject = [];
 
-    function controller() {
+    function controller() {
         /* jshint validthis: true */
         var vm = this;
 
