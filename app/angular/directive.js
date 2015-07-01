@@ -22,13 +22,23 @@
                 'shutterUrl': '@',
                 'viewerHeight': '@',
                 'viewerWidth': '@',
-                'cropHeight': "@",
-                'cropWidth': "@",
+                'cropHeight': '@',
+                'cropWidth': '@',
                 'imageFormat': '@',
                 'jpegQuality': '@',
                 'snapshot': '='
             },
-            'templateUrl': '/angular/ng-camera.html',
+            // 'templateUrl': '/angular/ng-camera.html',
+            'template': ['<div class="ng-camera">',
+                '<div class="ng-camera-countdown" ng-if="countdown" ng-show="activeCountdown">',
+                '<p class="tick">{{countdownText}}</p>',
+                '</div>',
+                '<div class="ng-camera-stack">',
+                '<img class="ng-camera-overlay" ng-if="overlayUrl" ng-show="cameraLive" ng-src="{{overlayUrl}}" alt="overlay">',
+                '<div id="ng-camera-feed"></div>',
+                '</div>',
+                '<button id="ng-camera-action" ng-click="getSnapshot()">{{actionMessage}}</button>',
+                '</div>'].join(''),
             'link': link
         };
 
@@ -54,6 +64,14 @@
             }
             if(scope.outputWidth === undefined) {
                 scope.outputWidth = scope.viewerWidth;
+            }
+
+            /**
+             * Disable cropping if one or the two params are undefined
+             */
+            if(scope.cropHeight === undefined || scope.cropWidth === undefined) {
+                scope.cropHeight = false;
+                scope.cropWith = false;
             }
 
             /**
