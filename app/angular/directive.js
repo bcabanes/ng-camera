@@ -22,6 +22,8 @@
                 'shutterUrl': '@',
                 'viewerHeight': '@',
                 'viewerWidth': '@',
+                'cropHeight': "@",
+                'cropWidth': "@",
                 'imageFormat': '@',
                 'jpegQuality': '@',
                 'snapshot': '='
@@ -63,6 +65,8 @@
                 height: scope.viewerHeight,
                 dest_width: scope.outputWidth,
                 dest_height: scope.outputHeight,
+                crop_width: scope.cropWidth,
+                crop_height: scope.cropHeight,
                 image_format: scope.imageFormat,
                 jpeg_quality: scope.jpegQuality,
                 force_flash: false
@@ -159,6 +163,10 @@
                     });
                 }
             };
+
+            scope.$on('$destroy', function() {
+                Webcam.reset();
+            });
         }
     }
 
