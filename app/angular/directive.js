@@ -1,9 +1,9 @@
 /* global Webcam */
-(function(angular) {
+(function() {
     'use strict';
 
     angular
-        .module('camera')
+        .module('camera',[])
         .directive('ngCamera', directive);
 
     directive.$inject = ['$q', '$timeout'];
@@ -26,7 +26,8 @@
                 'cropWidth': '@',
                 'imageFormat': '@',
                 'jpegQuality': '@',
-                'snapshot': '='
+                'snapshot': '=',
+                'callback':'='
             },
             // 'templateUrl': '/angular/ng-camera.html',
             'template': ['<div class="ng-camera">',
@@ -169,6 +170,10 @@
 
                         Webcam.snap(function(data_uri) {
                             scope.snapshot = data_uri;
+                            console.log('image captured');
+                            if(scope.callback!==undefined){
+                                scope.callback(scope.snapshot)
+                            }
                         });
                     });
                 } else {
@@ -178,6 +183,10 @@
 
                     Webcam.snap(function(data_uri) {
                         scope.snapshot = data_uri;
+                        console.log('image captured');
+                        if(scope.callback!==undefined){
+                            scope.callback(scope.snapshot)
+                        }
                     });
                 }
             };
@@ -188,4 +197,4 @@
         }
     }
 
-})(angular);
+})();
