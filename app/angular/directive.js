@@ -1,5 +1,5 @@
 /* global Webcam */
-(function(angular, window, undefined) {
+(function(window, angular, undefined) {
     'use strict';
 
     angular
@@ -197,4 +197,4 @@
         }
     }
 
-})(angular,window);
+})(window, angular);
