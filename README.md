@@ -1,3 +1,5 @@
+# ❌ Repository not maintained anymore ❌
+
 # ng-camera
 
 Ng-camera is an AngularJS directive for capturing images
